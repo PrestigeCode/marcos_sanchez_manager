@@ -117,4 +117,25 @@
     }, { passive: true });
   }
 
+  /* ── Marquee: animación con JS (funciona con reducir movimiento) ── */
+  var marquees = document.querySelectorAll('.marquee__track');
+  if (marquees.length) {
+    marquees.forEach(function (track) {
+      var isReverse = track.closest('.marquee--reverse');
+      var speed = isReverse ?
+        (window.innerWidth <= 540 ? 20 : window.innerWidth <= 768 ? 28 : 60) :
+        (window.innerWidth <= 540 ? 18 : window.innerWidth <= 768 ? 25 : 70);
+      var offset = 0;
+
+      function animate() {
+        offset -= (100 / (speed * 60));
+        if (offset <= -50) offset = 0;
+        track.style.transform = 'translate3d(' + offset + '%, 0, 0)';
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
+  }
+
 })();
