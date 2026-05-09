@@ -251,11 +251,19 @@
 
     @media (max-width: 768px) {
       .marquee-section { padding: 40px 0; }
-      .marquee__track { gap: 28px; animation-duration: 45s; }
-      .marquee--reverse .marquee__track { animation-duration: 38s; }
+      .marquee__track { gap: 20px; animation-duration: 35s; }
+      .marquee--reverse .marquee__track { animation-duration: 28s; }
       .marquee__item { font-size: clamp(1rem, 4.8vw, 1.5rem); }
       .marquee__sep { width: 10px; height: 10px; }
       .marquee + .marquee { margin-top: 16px; }
+    }
+
+    @media (max-width: 540px) {
+      .marquee-section { padding: 32px 0; }
+      .marquee__track { gap: 14px; animation-duration: 25s; }
+      .marquee--reverse .marquee__track { animation-duration: 20s; }
+      .marquee__item { font-size: clamp(0.85rem, 4vw, 1.2rem); }
+      .marquee__sep { width: 8px; height: 8px; }
     }
 
     /* Sobre mí / bio */
@@ -739,7 +747,7 @@
       .hero-page { min-height: 85vh; padding-top: 64px; }
       .hero-page__bg { top: 64px; }
       .hero-page::before { inset: 64px 0 0; }
-      .hero-page__bg img { object-position: 60% top; }
+      .hero-page__bg img { object-position: 85% top; }
       .hero-page__content { padding: 50px 18px; }
       .hero-page__content::before { left: 18px; bottom: 34px; }
       .hero-page__content h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 16px; }
@@ -774,7 +782,7 @@
       .hero-page__bg::after {
         background: linear-gradient(to bottom, rgba(6,6,6,0.2) 0%, rgba(6,6,6,0.55) 45%, rgba(6,6,6,0.95) 100%);
       }
-      .hero-page__bg img { object-position: 68% top; }
+      .hero-page__bg img { object-position: 90% top; }
       .hero-page__content { padding: 40px 16px; }
       .hero-page__content::before { left: 16px; bottom: 24px; width: 150px; }
       .hero-page__content h1 { font-size: clamp(1.8rem, 10vw, 2.4rem); }
