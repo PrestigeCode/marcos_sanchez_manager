@@ -184,9 +184,8 @@
       display: flex;
       align-items: center;
       gap: 44px;
-      width: max-content;
       animation: marquee-scroll 70s linear infinite;
-      backface-visibility: hidden;
+      will-change: transform;
     }
 
     .marquee--reverse .marquee__track {
@@ -241,12 +240,8 @@
     }
 
     @keyframes marquee-scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-50%, 0, 0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -257,13 +252,11 @@
     @media (max-width: 768px) {
       .marquee-section { padding: 40px 0; }
       .marquee__track {
-        gap: 18px;
-        animation: marquee-scroll-mobile 30s linear infinite;
-        animation-play-state: running !important;
+        gap: 16px;
+        animation: marquee-scroll 25s linear infinite;
       }
       .marquee--reverse .marquee__track {
-        animation: marquee-scroll-mobile 30s linear infinite reverse;
-        animation-play-state: running !important;
+        animation: marquee-scroll 25s linear infinite reverse;
       }
       .marquee__item { font-size: clamp(1rem, 4.8vw, 1.5rem); }
       .marquee__sep { width: 10px; height: 10px; }
@@ -274,20 +267,13 @@
       .marquee-section { padding: 32px 0; }
       .marquee__track {
         gap: 12px;
-        animation: marquee-scroll-mobile 20s linear infinite;
-        animation-play-state: running !important;
+        animation: marquee-scroll 18s linear infinite;
       }
       .marquee--reverse .marquee__track {
-        animation: marquee-scroll-mobile 20s linear infinite reverse;
-        animation-play-state: running !important;
+        animation: marquee-scroll 18s linear infinite reverse;
       }
       .marquee__item { font-size: clamp(0.85rem, 4vw, 1.2rem); }
       .marquee__sep { width: 8px; height: 8px; }
-    }
-
-    @keyframes marquee-scroll-mobile {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* Sobre mí / bio */
@@ -943,6 +929,13 @@
         <span class="marquee__sep" aria-hidden="true"></span>
         <span class="marquee__item" aria-hidden="true">Primera Nacional</span>
         <span class="marquee__sep" aria-hidden="true"></span>
+
+        <span class="marquee__item" aria-hidden="true">CAR de Mirandela</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
+        <span class="marquee__item marquee__item--ghost" aria-hidden="true">Club Sanse</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
+        <span class="marquee__item" aria-hidden="true">NV Center</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
       </div>
     </div>
 
@@ -972,6 +965,13 @@
         <span class="marquee__item marquee__item--accent" aria-hidden="true">Estrategia competitiva</span>
         <span class="marquee__sep" aria-hidden="true"></span>
         <span class="marquee__item marquee__item--ghost" aria-hidden="true">Gestión de carreras</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
+
+        <span class="marquee__item marquee__item--accent" aria-hidden="true">3+ años compitiendo</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
+        <span class="marquee__item" aria-hidden="true">2+ años en centros de élite</span>
+        <span class="marquee__sep" aria-hidden="true"></span>
+        <span class="marquee__item marquee__item--ghost" aria-hidden="true">1+ año como manager</span>
         <span class="marquee__sep" aria-hidden="true"></span>
       </div>
     </div>
