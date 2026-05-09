@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcos Sánchez | Manager Estratégico de Carreras — Tenis de Mesa</title>
+  <meta name="description" content="Gestión estratégica de carrera para jóvenes atletas de tenis de mesa en España. Convierte tu talento en trayectoria competitiva real.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── Estilos específicos de index.html ── */
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 140px 24px 100px;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.35;
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(6,6,6,0.92) 0%,
+        rgba(6,6,6,0.65) 50%,
+        rgba(6,6,6,0.85) 100%
+      );
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero__text {}
+
+    .hero__badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 22px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      border-radius: 3px;
+      margin-bottom: 28px;
+    }
+
+    .hero__title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero__title span { color: var(--accent); }
+
+    .hero__desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+      max-width: 500px;
+    }
+
+    .hero__sub {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero__photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero__photo img {
+      width: 100%;
+      max-width: 440px;
+      height: 560px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-mid);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__photo::before {
+      content: '';
+      position: absolute;
+      top: 24px; left: 24px;
+      right: -24px; bottom: -24px;
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      opacity: 0.3;
+    }
+
+    /* Sección problema */
+    .problema { background: var(--bg-section); }
+
+    .problema__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .problema__card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problema__card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .problema__card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .problema__card:hover::before { transform: scaleX(1); }
+
+    .problema__icon {
+      width: 52px; height: 52px;
+      background: rgba(245, 111, 54, 0.1);
+      border: 1px solid rgba(245, 111, 54, 0.26);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .problema__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .problema__card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .problema__card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* Experiencia */
+    .experiencia { background: var(--bg); }
+
+    .experiencia__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .experiencia__img-wrap {
+      position: relative;
+    }
+
+    .experiencia__img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+
+    .experiencia__img-wrap::after {
+      content: '';
+      position: absolute;
+      top: 20px; right: -20px;
+      bottom: -20px; left: 20px;
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    .experiencia__texto {}
+
+    .experiencia__texto h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    }
+
+    .experiencia__texto p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .exp-stats {
+      display: flex;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    .exp-stat {}
+
+    .exp-stat__num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .exp-stat__label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 4px;
+    }
+
+    .experiencia__cta {
+      margin-top: 32px;
+    }
+
+    .centros h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .centros__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--bg-section);
+      border: 1px solid var(--border-mid);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Galería inline */
+    .galeria { background: var(--bg-section); }
+
+    .galeria__intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .galeria__video {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    .galeria__video::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,111,54,0.12), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .galeria__video iframe {
+      width: 100%;
+      height: 300px;
+      display: block;
+    }
+
+    /* Servicios */
+    .servicios { background: var(--bg); }
+
+    .servicios__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .servicio {
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .servicio::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-alt));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--transition);
+    }
+
+    .servicio:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .servicio:hover::before { transform: scaleY(1); }
+
+    .servicio__num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--accent);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .servicio h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .servicio p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+    }
+
+    /* Proceso */
+    .proceso { background: var(--bg-section); }
+
+    .proceso__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      position: relative;
+    }
+
+    .proceso__grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--border-mid), var(--accent), var(--border-mid));
+      z-index: 0;
+    }
+
+    .paso {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .paso__num {
+      width: 80px; height: 80px;
+      background: var(--bg);
+      border: 2px solid var(--border-mid);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--accent);
+      transition: all var(--transition);
+    }
+
+    .paso:hover .paso__num {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(245,111,54,0.35);
+    }
+
+    .paso h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .paso p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* Ángulos / Pain points */
+    .angulos { background: var(--bg); }
+
+    .angulos__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .angulos__img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3 / 4;
+      width: 100%;
+    }
+
+    .angulos__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .angulos__img-wrap:hover .angulos__img {
+      transform: scale(1.04);
+    }
+
+    .angulos__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .angulos__list li {
+      background: var(--bg-section);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px 28px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      transition: all var(--transition);
+    }
+
+    .angulos__list li:hover {
+      background: rgba(245, 111, 54, 0.08);
+      color: var(--text);
+      transform: translateX(8px);
+    }
+
+    /* CTA final */
+    .cta-final {
+      background: var(--bg-section);
+      text-align: center;
+      padding: 120px 24px;
+      position: relative;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, var(--border-mid), transparent);
+    }
+
+    .cta-final h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 20px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-final p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 44px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-final__btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero { padding: 110px 20px 80px; min-height: 90vh; }
+      .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero__title { font-size: clamp(2rem, 7vw, 3rem); }
+      .hero__bg img {
+        object-position: 75% center;
+        opacity: 0.45;
+      }
+      .hero__bg::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(6,6,6,0.85) 0%,
+          rgba(6,6,6,0.55) 45%,
+          rgba(6,6,6,0.85) 100%
+        );
+      }
+      .problema__grid { grid-template-columns: repeat(2, 1fr); }
+      .servicios__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+
+    @media (max-width: 900px) {
+      .experiencia__grid,
+      .angulos__grid { grid-template-columns: 1fr; gap: 40px; }
+      .experiencia__img-wrap img { height: 380px; }
+      .experiencia__img-wrap::after { display: none; }
+      .galeria__intro { grid-template-columns: 1fr; gap: 32px; }
+      .galeria__video iframe { height: 260px; }
+      .servicios__grid { grid-template-columns: 1fr; }
+      .proceso__grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .proceso__grid::before { display: none; }
+      .problema__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 90px 18px 60px; }
+      .hero__bg img { object-position: 72% center; opacity: 0.4; }
+      .hero__inner { grid-template-columns: 1fr; gap: 24px; align-items: flex-start; }
+      .hero__photo { order: -1; max-width: 340px; width: 100%; margin: 0 auto 12px; }
+      .hero__photo img { max-width: 100%; height: 420px; }
+      .hero__badge { font-size: 0.58rem; letter-spacing: 0.2em; padding: 7px 14px; margin-bottom: 18px; }
+      .hero__title { font-size: clamp(1.5rem, 6.5vw, 2.1rem); margin-bottom: 16px; }
+      .hero__desc { font-size: 0.95rem; line-height: 1.65; margin-bottom: 8px; max-width: 100%; }
+      .hero__sub { font-size: 0.88rem; margin-bottom: 24px; }
+      .hero__cta { gap: 10px; }
+
+      .cta-final h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .cta-final p { font-size: 0.92rem; }
+
+      .problema__card { padding: 28px 22px; }
+      .problema__icon { width: 46px; height: 46px; margin-bottom: 14px; }
+      .problema__icon svg { width: 23px; height: 23px; }
+      .problema__card h3 { font-size: 1.05rem; }
+
+      .experiencia__img-wrap img { height: 320px; }
+      .experiencia__texto h2 { font-size: clamp(1.4rem, 5.5vw, 1.85rem); }
+      .experiencia__texto p { font-size: 0.95rem; line-height: 1.75; }
+      .centros__tags .tag { font-size: 0.72rem; padding: 6px 12px; }
+
+      .servicio { padding: 32px 24px; }
+      .servicio__num { font-size: 2.6rem; }
+      .servicio h3 { font-size: 1.05rem; }
+
+      .paso__num { width: 64px; height: 64px; font-size: 1.15rem; margin-bottom: 18px; }
+      .paso h3 { font-size: 0.95rem; }
+      .paso p { font-size: 0.82rem; }
+
+      .angulos__list li { padding: 18px 22px; font-size: 0.92rem; }
+      .angulos__list li:hover { transform: none; }
+      .angulos h2[style], .galeria h2[style] {
+        font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
+      }
+
+      .cta-final { padding: 80px 20px; }
+      .cta-final p { font-size: 0.95rem; margin-bottom: 32px; }
+      .cta-final__btns { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-final__btns .btn { width: auto; }
+    }
+
+    @media (max-width: 540px) {
+      .hero { padding: 84px 16px 50px; min-height: auto; }
+      .hero__bg img { object-position: 70% center; opacity: 0.35; }
+      .hero__photo { max-width: 300px; }
+      .hero__photo img { height: 360px; }
+      .hero__title { font-size: clamp(1.35rem, 7vw, 1.8rem); line-height: 1.15; }
+      .hero__title br { display: none; }
+      .hero__desc { font-size: 0.9rem; }
+      .hero__sub { font-size: 0.82rem; margin-bottom: 22px; }
+      .hero__cta { flex-direction: column; align-items: flex-start; width: 100%; gap: 10px; }
+      .hero__cta .btn { width: auto; text-align: center; }
+
+      .cta-final h2 { font-size: clamp(1.3rem, 7vw, 1.7rem); }
+      .cta-final p { font-size: 0.88rem; }
+
+      .problema__grid { gap: 14px; }
+
+      .experiencia__img-wrap img { height: 260px; }
+      .experiencia__texto h2 { font-size: clamp(1.25rem, 6.5vw, 1.6rem); }
+      .exp-stats { flex-wrap: wrap; gap: 18px 24px; padding: 22px 0; margin: 22px 0; }
+      .exp-stat__num { font-size: 1.9rem; }
+      .exp-stat__label { font-size: 0.65rem; }
+
+      .galeria__video iframe { height: 220px; }
+
+      .servicio { padding: 26px 20px; }
+
+      .proceso__grid { grid-template-columns: 1fr; gap: 24px; }
+
+      .angulos__list { gap: 12px; }
+      .angulos__img-wrap { aspect-ratio: 4/5; max-width: 360px; margin: 0 auto; }
+      .angulos h2[style], .galeria h2[style] {
+        font-size: clamp(1.25rem, 6.5vw, 1.6rem) !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero__title { font-size: 1.3rem; }
+      .hero__desc { font-size: 0.85rem; }
+      .servicio__num { font-size: 2.2rem; }
+      .paso__num { width: 56px; height: 56px; font-size: 1rem; }
+      .cta-final h2 { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ═══════════════════════════════════════════════ -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="img/logo-nav.png" alt="Marcos Sánchez"></a>
+      <ul class="nav__links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="trayectoria.html">Sobre Mí</a></li>
+        <li><a href="#contacto" class="nav__cta">Contactar</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav__mobile">
+    <a href="#inicio">Inicio</a>
+    <a href="#galeria">Galería</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="trayectoria.html">Sobre Mí</a>
+    <a href="#contacto">Contactar</a>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg">
+      <img src="img/hero-main.png" alt="Tenis de mesa de alto nivel">
+    </div>
+    <div class="hero__inner">
+      <div class="hero__text">
+        <span class="hero__badge">Manager Estratégico · Tenis de Mesa</span>
+        <h1 class="hero__title">
+          Diseño la carrera de los<br>
+          <span>mejores talentos</span><br>
+          del tenis de mesa
+        </h1>
+        <p class="hero__desc">
+          Gesiono el camino deportivo de jóvenes talentos.
+          Construyo trayectorias competitivas reales que transforman talento en resultados.
+        </p>
+        <p class="hero__sub">Marcos Sánchez — Tu manager estratégico</p>
+        <div class="hero__cta">
+          <a href="#contacto" class="btn btn-primary">Transformar mi carrera</a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+      </div>
+      <div class="hero__photo">
+        <img src="img/hero-main.png" alt="Marcos Sánchez">
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EL PROBLEMA ════════════════════════════════════════ -->
+  <section class="problema" id="problema">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="label">El problema que resuelvo</span>
+        <h2 class="underline-accent">3 situaciones que bloquean a los talentos</h2>
+        <p>Muchos jóvenes con potencial se quedan sin dirección. Sin club competitivo. Sin circuito. Sin alguien que maneje los hilos.</p>
+      </div>
+      <div class="problema__grid">
+        <div class="problema__card reveal reveal-delay-1">
+          <div class="problema__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8"></circle>
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+            </svg>
+          </div>
+          <h3>Falta de orientación</h3>
+          <p>Los jóvenes talentos con potencial no tienen un mentor que guíe su desarrollo competitivo de forma estratégica y estructurada.</p>
+        </div>
+        <div class="problema__card reveal reveal-delay-2">
+          <div class="problema__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="10" cy="7" r="4"></circle>
+              <path d="M20 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M17 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Padres sin dirección</h3>
+          <p>Los padres quieren ayudar pero no conocen el circuito competitivo ni saben cómo mover a su hijo hacia adelante en el sistema.</p>
+        </div>
+        <div class="problema__card reveal reveal-delay-3">
+          <div class="problema__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 19V5"></path>
+              <path d="M4 19h16"></path>
+              <path d="m7 15 4-4 3 3 5-7"></path>
+              <path d="M16 7h3v3"></path>
+            </svg>
+          </div>
+          <h3>Atletas estancados</h3>
+          <p>Jugadores con talento que no encuentran un club competitivo que les permita escalar en el ranking y crecer de verdad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EXPERIENCIA ════════════════════════════════════════ -->
+  <section class="experiencia" id="experiencia">
+    <div class="container">
+      <div class="experiencia__grid">
+        <div class="experiencia__img-wrap reveal">
+          <img src="img/freepik__haz-una-version-profesional-de-esta-foto-realista-__49091.png" alt="Marcos Sánchez en competición">
+        </div>
+        <div class="experiencia__texto reveal reveal-delay-1">
+          <span class="label">Sobre Marcos Sánchez</span>
+          <h2 class="underline-accent" style="margin-bottom: 32px;">Experiencia forjada en la pista</h2>
+          <p>
+            El tenis de mesa es un deporte que combina velocidad, técnica y estrategia al más alto nivel.
+            Mi objetivo es contribuir al crecimiento de este deporte a través de la experiencia práctica,
+            el trabajo con jugadores y la gestión deportiva.
+          </p>
+          <p>
+            Cuento con <strong>1 año de experiencia como manager deportivo</strong>, participando en la
+            organización y desarrollo de proyectos. Como jugador, me he formado durante
+            <strong>varios años en centros de alto rendimiento</strong>, entrenando en entornos de élite.
+          </p>
+          <p>
+            A lo largo de mi trayectoria he competido durante <strong>3 temporadas en ligas</strong>,
+            lo que me ha permitido conocer de primera mano la exigencia del entorno competitivo real.
+          </p>
+
+          <div class="centros">
+            <h4>Centros de alto rendimiento</h4>
+            <div class="centros__tags">
+              <span class="tag">CAR Mirandela (Portugal)</span>
+              <span class="tag">Club Sanse</span>
+              <span class="tag">NV Center</span>
+            </div>
+          </div>
+
+          <div class="experiencia__cta">
+            <a href="trayectoria.html" class="btn btn-primary">Saber más sobre Marcos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALERÍA ════════════════════════════════════════════ -->
+  <section class="galeria" id="galeria">
+    <div class="container">
+      <div class="galeria__intro reveal">
+        <div>
+          <span class="label">Trayectoria en acción</span>
+          <h2 class="underline-accent" style="margin-bottom: 16px; font-size: clamp(1.8rem, 4vw, 2.6rem);">Momentos y resultados</h2>
+          <p style="color: var(--text-muted); margin-top: 20px;">
+            Así compito, entreno y lidero. Cada partido, cada jornada, cada decisión
+            como manager se refleja en los resultados de quienes confían en este proyecto.
+          </p>
+        </div>
+        <div class="galeria__video">
+          <iframe src="https://www.youtube.com/embed/mFwfOv0G37w?rel=0&modestbranding=1"
+            title="Marcos Sánchez — Trayectoria en acción"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="photo reveal" data-lightbox>
+          <img src="img/competicion-2.jpg" alt="Marcos Sánchez en competición" loading="lazy">
+          <div class="photo__overlay"><span>Competición</span></div>
+        </div>
+        <div class="photo reveal reveal-delay-1" data-lightbox>
+          <img src="img/competicion-3.jpg" alt="Marcos Sánchez — entrenamiento" loading="lazy">
+          <div class="photo__overlay"><span>Entrenamiento</span></div>
+        </div>
+        <div class="photo reveal reveal-delay-2" data-lightbox>
+          <img src="img/competicion-4.jpg" alt="Marcos Sánchez — partido" loading="lazy">
+          <div class="photo__overlay"><span>Partido</span></div>
+        </div>
+        <div class="photo reveal reveal-delay-2" data-lightbox>
+          <img src="img/entrenamiento-1.jpg" alt="Sesión de entrenamiento" loading="lazy">
+          <div class="photo__overlay"><span>Sparring</span></div>
+        </div>
+        <div class="photo reveal reveal-delay-3" data-lightbox>
+          <img src="img/entrenamiento-2.jpg" alt="Sesión de alto rendimiento" loading="lazy">
+          <div class="photo__overlay"><span>Alto rendimiento</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICIOS ═════════════════════════════════════════ -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Lo que hago por ti</span>
+        <h2 class="underline-accent">Mis servicios</h2>
+        <p>Gestión completa del camino deportivo, desde la estrategia hasta la ejecución en el circuito.</p>
+      </div>
+      <div class="servicios__grid">
+        <div class="servicio reveal reveal-delay-1">
+          <div class="servicio__num">01</div>
+          <h3>Gestión estratégica de carrera</h3>
+          <p>Diseñamos tu hoja de ruta personalizada hacia el circuito competitivo. Planificación completa del desarrollo deportivo a largo plazo con objetivos claros y medibles.</p>
+        </div>
+        <div class="servicio reveal reveal-delay-2">
+          <div class="servicio__num">02</div>
+          <h3>Búsqueda de clubes y ligas</h3>
+          <p>Conecto a los atletas con clubes y ligas que se ajustan a su nivel y ambiciones competitivas. Abrimos las puertas que no sabes cómo tocar.</p>
+        </div>
+        <div class="servicio reveal reveal-delay-3">
+          <div class="servicio__num">03</div>
+          <h3>Organización de sparrings</h3>
+          <p>Gestiono partidos de entrenamiento con rivales de nivel similar para ganar experiencia competitiva real y acelerar el progreso técnico.</p>
+        </div>
+        <div class="servicio reveal reveal-delay-4">
+          <div class="servicio__num">04</div>
+          <h3>Asesoría personalizada</h3>
+          <p>Mentoría directa para atletas y familias que toman decisiones. Consultas individuales sobre competición, mentalidad, circuito y desarrollo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESO ════════════════════════════════════════════ -->
+  <section class="proceso" id="proceso">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="label">Cómo trabajo</span>
+        <h2 class="underline-accent">Mi proceso en 4 fases</h2>
+        <p>Un método estructurado que convierte talento en trayectoria competitiva real.</p>
+      </div>
+      <div class="proceso__grid">
+        <div class="paso reveal reveal-delay-1">
+          <div class="paso__num">1</div>
+          <h3>Diagnóstico competitivo</h3>
+          <p>Evaluamos el nivel real, el entorno y las oportunidades del atleta con honestidad.</p>
+        </div>
+        <div class="paso reveal reveal-delay-2">
+          <div class="paso__num">2</div>
+          <h3>Plan estratégico personalizado</h3>
+          <p>Definimos objetivos, calendario y acciones concretas a corto y largo plazo.</p>
+        </div>
+        <div class="paso reveal reveal-delay-3">
+          <div class="paso__num">3</div>
+          <h3>Conexión con clubes y ligas</h3>
+          <p>Identificamos y contactamos con los clubes y ligas ideales para el perfil del atleta.</p>
+        </div>
+        <div class="paso reveal reveal-delay-4">
+          <div class="paso__num">4</div>
+          <h3>Seguimiento y optimización</h3>
+          <p>Acompañamiento continuo para ajustar y mejorar resultados según la evolución.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ÁNGULOS / ¿TE SUENA? ══════════════════════════════ -->
+  <section class="angulos" id="angulos">
+    <div class="container">
+      <div class="angulos__grid">
+        <div class="reveal">
+          <span class="label">¿Te suena?</span>
+          <h2 class="underline-accent" style="margin-bottom: 36px; font-size: clamp(1.8rem, 4vw, 2.4rem);">
+            Situaciones que resuelvo cada día
+          </h2>
+          <ul class="angulos__list">
+            <li>Tu hijo tiene talento real, pero no sabes qué club buscar ni cómo entrar al circuito.</li>
+            <li>Tu atleta lleva meses estancado, compitiendo por debajo de su nivel o sin competir.</li>
+            <li>Como familia no conocéis el sistema de ligas español y no sabéis por dónde empezar.</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="angulos__img-wrap">
+            <img src="img/rio-2016.jpg" alt="Competición internacional de tenis de mesa" class="angulos__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+  <section class="cta-final" id="contacto">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Primer paso</span>
+        <h2>¿Listo para construir tu trayectoria?</h2>
+        <p>El talento necesita dirección. Hablemos sobre el diagnóstico y el siguiente paso.</p>
+        <div class="cta-final__btns">
+          <a href="https://wa.me/34614448067?text=Hola%20Marcos%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios" target="_blank" rel="noopener" class="btn btn-primary">Hablar con Marcos</a>
+          <a href="trayectoria.html" class="btn btn-outline">Ver mi trayectoria</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REDES SOCIALES ════════════════════════════════════ -->
+  <section class="redes">
+    <div class="redes__inner reveal">
+      <span class="label">Sígueme</span>
+      <h2>Únete a la comunidad</h2>
+      <p>Contenido diario sobre tenis de mesa, gestión de carreras, mentalidad competitiva y el camino hacia la élite.</p>
+      <div class="redes__grid">
+        <a href="https://www.instagram.com/el_marqui_0222?igsh=d2ZiNzN6b3VoMmRw&utm_source=qr" target="_blank" rel="noopener" class="red-btn red-btn--instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/share/U6rBfZrzLXdcktxu/?mibextid=LQQJ4d" target="_blank" rel="noopener" class="red-btn red-btn--facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.tiktok.com/@marcos.antonio.sa089?_t=8oLvyQIfCaX&_r=1" target="_blank" rel="noopener" class="red-btn red-btn--tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="img/logo-nav.png" alt="Marcos Sánchez">
+        </a>
+        <p class="footer__tagline">Manager estratégico de carreras en tenis de mesa. Convierte tu talento en trayectoria real.</p>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__nav-group">
+          <p class="footer__nav-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="trayectoria.html">Sobre Mí</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Marcos Sánchez · Manager Estratégico de Carreras en Tenis de Mesa</p>
+      <div class="footer__accent-line"></div>
+    </div>
+  </footer>
+
+  <!-- ══ WHATSAPP FLOTANTE ════════════════════════════════ -->
+  <a href="https://wa.me/34614448067?text=Hola%20Marcos%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios"
+     target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+    </svg>
+    <span class="wa-float__tooltip">Escríbeme</span>
+  </a>
+
+  <!-- ══ LIGHTBOX ══════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Cerrar">×</button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
