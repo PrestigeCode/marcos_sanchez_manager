@@ -173,6 +173,7 @@
       position: relative;
       overflow: hidden;
       z-index: 2;
+      width: 100%;
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
               mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
@@ -184,13 +185,13 @@
       align-items: center;
       gap: 44px;
       width: max-content;
-      animation: marquee-scroll 65s linear infinite;
-      transform: translateZ(0);
+      animation: marquee-scroll 70s linear infinite;
+      backface-visibility: hidden;
     }
 
     .marquee--reverse .marquee__track {
       animation-direction: reverse;
-      animation-duration: 55s;
+      animation-duration: 60s;
     }
 
     .marquee:hover .marquee__track { animation-play-state: paused; }
@@ -240,8 +241,12 @@
     }
 
     @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -251,8 +256,15 @@
 
     @media (max-width: 768px) {
       .marquee-section { padding: 40px 0; }
-      .marquee__track { gap: 20px; animation-duration: 35s; }
-      .marquee--reverse .marquee__track { animation-duration: 28s; }
+      .marquee__track {
+        gap: 18px;
+        animation: marquee-scroll-mobile 30s linear infinite;
+        animation-play-state: running !important;
+      }
+      .marquee--reverse .marquee__track {
+        animation: marquee-scroll-mobile 30s linear infinite reverse;
+        animation-play-state: running !important;
+      }
       .marquee__item { font-size: clamp(1rem, 4.8vw, 1.5rem); }
       .marquee__sep { width: 10px; height: 10px; }
       .marquee + .marquee { margin-top: 16px; }
@@ -260,10 +272,22 @@
 
     @media (max-width: 540px) {
       .marquee-section { padding: 32px 0; }
-      .marquee__track { gap: 14px; animation-duration: 25s; }
-      .marquee--reverse .marquee__track { animation-duration: 20s; }
+      .marquee__track {
+        gap: 12px;
+        animation: marquee-scroll-mobile 20s linear infinite;
+        animation-play-state: running !important;
+      }
+      .marquee--reverse .marquee__track {
+        animation: marquee-scroll-mobile 20s linear infinite reverse;
+        animation-play-state: running !important;
+      }
       .marquee__item { font-size: clamp(0.85rem, 4vw, 1.2rem); }
       .marquee__sep { width: 8px; height: 8px; }
+    }
+
+    @keyframes marquee-scroll-mobile {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* Sobre mí / bio */
