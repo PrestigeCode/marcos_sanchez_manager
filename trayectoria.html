@@ -69,6 +69,7 @@
       filter: saturate(1.08) contrast(1.05) brightness(0.94);
       transform: scale(1.02);
       transform-origin: 70% 22%;
+      loading: lazy;
     }
 
     .hero-page__bg::after {
@@ -738,7 +739,7 @@
       .hero-page { min-height: 85vh; padding-top: 64px; }
       .hero-page__bg { top: 64px; }
       .hero-page::before { inset: 64px 0 0; }
-      .hero-page__bg img { object-position: 72% top; }
+      .hero-page__bg img { object-position: 60% top; }
       .hero-page__content { padding: 50px 18px; }
       .hero-page__content::before { left: 18px; bottom: 34px; }
       .hero-page__content h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 16px; }
@@ -863,7 +864,7 @@
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <div class="hero-page">
     <div class="hero-page__bg">
-      <img src="img/hero-trayectoria-sudadera.png" alt="Marcos Sánchez — tenis de mesa">
+      <img src="img/hero-trayectoria-sudadera.png" alt="Marcos Sánchez — tenis de mesa" loading="lazy">
     </div>
     <div class="hero-page__content">
       <div class="badge reveal">
@@ -949,7 +950,7 @@
     <div class="container">
       <div class="bio__grid">
         <div class="bio__img-wrap reveal">
-          <img src="img/marcos-perfil.jpg" alt="Marcos Sánchez">
+          <img src="img/marcos-perfil.jpg" alt="Marcos Sánchez" loading="lazy">
         </div>
         <div class="bio__text reveal reveal-delay-1">
           <span class="label">Sobre mí</span>
@@ -993,7 +994,7 @@
       <div class="metod__grid">
         <div class="metod__card reveal reveal-delay-1">
           <div class="metod__card-img">
-            <img src="img/tenis-mesa-3.jpg" alt="Estrategia competitiva">
+            <img src="img/tenis-mesa-3.jpg" alt="Estrategia competitiva" loading="lazy">
           </div>
           <div class="metod__card-body">
             <h3>01. Estrategia</h3>
@@ -1002,7 +1003,7 @@
         </div>
         <div class="metod__card reveal reveal-delay-2">
           <div class="metod__card-img">
-            <img src="img/tenis-mesa-6.jpg" alt="Preparación técnica">
+            <img src="img/tenis-mesa-6.jpg" alt="Preparación técnica" loading="lazy">
           </div>
           <div class="metod__card-body">
             <h3>02. Preparación</h3>
@@ -1011,7 +1012,7 @@
         </div>
         <div class="metod__card reveal reveal-delay-3">
           <div class="metod__card-img">
-            <img src="img/tenis-mesa-2.jpg" alt="Conexión con clubes">
+            <img src="img/tenis-mesa-2.jpg" alt="Conexión con clubes" loading="lazy">
           </div>
           <div class="metod__card-body">
             <h3>03. Conexión</h3>
