@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicio de Fichajes | Marcos Sánchez — Manager Estratégico de Carreras</title>
+  <meta name="description" content="Servicio de intermediación de fichajes: conecta con clubes competitivos y equipos federados en España. Negocia tu entrada al circuito con asesoría estratégica.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── Estilos específicos de fichajes.html ── */
+
+    /* Hero */
+    .hero-fichajes {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 140px 24px 100px;
+    }
+
+    .hero-fichajes__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-fichajes__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.5;
+    }
+
+    .hero-fichajes__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(6,6,6,0.70) 0%,
+        rgba(6,6,6,0.45) 50%,
+        rgba(6,6,6,0.65) 100%
+      );
+    }
+
+    .hero-fichajes__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-fichajes__badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 22px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      border-radius: 3px;
+      margin-bottom: 28px;
+    }
+
+    .hero-fichajes__title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .hero-fichajes__title span {
+      color: var(--accent);
+    }
+
+    .hero-fichajes__desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      max-width: 680px;
+    }
+
+    .hero-fichajes__desc-long {
+      display: block;
+    }
+
+    /* Timeline horizontal */
+    .timeline { background: var(--bg-section); }
+
+    .timeline__contenido {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .timeline__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      position: relative;
+    }
+
+    .timeline__grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: -12%;
+      right: -12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--border-mid), var(--accent), var(--border-mid));
+      z-index: 0;
+    }
+
+    .timeline__img {
+      position: relative;
+    }
+
+    .timeline__img img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+
+    .timeline__point {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline__circle {
+      width: 80px;
+      height: 80px;
+      background: var(--bg);
+      border: 2px solid var(--border-mid);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--accent);
+      transition: all var(--transition);
+    }
+
+    .timeline__point:hover .timeline__circle {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(245,111,54,0.35);
+    }
+
+    .timeline__point h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline__point p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* Flujo de 3 pasos */
+    .flujo { background: var(--bg); }
+
+    .flujo__contenido {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .flujo__pasos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .flujo__img {
+      position: relative;
+    }
+
+    .flujo__img img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+
+    .paso-flujo {
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .paso-flujo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .paso-flujo:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .paso-flujo:hover::before {
+      transform: scaleX(1);
+    }
+
+    .paso-flujo__num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .paso-flujo h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .paso-flujo p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+    }
+
+    /* Formulario CTA */
+    .cta-formulario { background: var(--bg-section); }
+
+    .cta-formulario__inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-formulario h2 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-formulario__desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 48px;
+      line-height: 1.75;
+    }
+
+    .formulario {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: all var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(245, 111, 54, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .formulario__btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      color: #fff;
+      border: none;
+      padding: 11px 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .formulario__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(245, 111, 54, 0.28);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-fichajes {
+        padding: 110px 20px 80px;
+        min-height: 90vh;
+      }
+
+      .timeline__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .timeline__grid::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .flujo__contenido {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .timeline__contenido {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .timeline__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline__grid::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-fichajes {
+        padding: 90px 18px 60px;
+      }
+
+      .hero-fichajes__title {
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        margin-bottom: 16px;
+      }
+
+      .hero-fichajes__desc {
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      .hero-fichajes__desc-long {
+        display: none;
+      }
+
+      .hero-fichajes__badge {
+        font-size: 0.58rem;
+        letter-spacing: 0.2em;
+        padding: 7px 14px;
+        margin-bottom: 18px;
+      }
+
+      .timeline__circle {
+        width: 64px;
+        height: 64px;
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+      }
+
+      .timeline__point h3 {
+        font-size: 0.95rem;
+      }
+
+      .paso-flujo {
+        padding: 36px 24px;
+      }
+
+      .paso-flujo__num {
+        font-size: 2.2rem;
+      }
+
+      .paso-flujo h3 {
+        font-size: 1.05rem;
+      }
+
+      .cta-formulario h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+      }
+
+      .cta-formulario__desc {
+        font-size: 0.95rem;
+        margin-bottom: 36px;
+      }
+
+      .formulario {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero-fichajes {
+        padding: 84px 16px 50px;
+        min-height: auto;
+      }
+
+      .hero-fichajes__title {
+        font-size: clamp(1.35rem, 7vw, 1.8rem);
+        line-height: 1.15;
+      }
+
+      .timeline__grid {
+        gap: 18px;
+      }
+
+      .timeline__circle {
+        width: 56px;
+        height: 56px;
+        font-size: 1.2rem;
+      }
+
+      .paso-flujo {
+        padding: 28px 20px;
+      }
+
+      .paso-flujo__num {
+        font-size: 2rem;
+      }
+
+      .cta-formulario h2 {
+        font-size: clamp(1.3rem, 7vw, 1.7rem);
+      }
+
+      .formulario {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-fichajes__title {
+        font-size: 1.3rem;
+      }
+
+      .timeline__circle {
+        width: 52px;
+        height: 52px;
+        font-size: 1rem;
+      }
+
+      .cta-formulario h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ═══════════════════════════════════════════════ -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="img/logo-nav.png" alt="Marcos Sánchez"></a>
+      <ul class="nav__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#galeria">Galería</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="index.html#proceso">Proceso</a></li>
+        <li><a href="trayectoria.html">Sobre Mí</a></li>
+        <li><a href="#contacto" class="nav__cta">Contactar</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav__mobile">
+    <a href="index.html">Inicio</a>
+    <a href="index.html#galeria">Galería</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="index.html#proceso">Proceso</a>
+    <a href="trayectoria.html">Sobre Mí</a>
+    <a href="#contacto">Contactar</a>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero-fichajes" id="inicio">
+    <div class="hero-fichajes__bg">
+      <img src="img/magnific_mesa-de-tenis-de-mesa-vis_2953480863.png" alt="Tenis de mesa de alto nivel" loading="lazy">
+    </div>
+    <div class="hero-fichajes__inner">
+      <h1 class="hero-fichajes__title reveal">
+        ¿Buscas equipo?<br>
+        <span>Te abro las puertas.</span>
+      </h1>
+      <p class="hero-fichajes__desc hero-fichajes__desc-long reveal reveal-delay-1">
+        Llevo años dentro del tenis de mesa — como jugador y como manager — y eso me ha dado algo que no se compra: confianza y relación directa con clubes y ligas de toda España. Sé cómo funciona el circuito por dentro y sé exactamente dónde encaja cada jugador.
+      </p>
+      <p class="hero-fichajes__desc reveal reveal-delay-2" style="margin-bottom: 0; color: var(--text); font-weight: 500;">
+        Si quieres dar el salto a un equipo competitivo, no tienes que llamar a puertas a ciegas. Yo ya sé cuáles abrir.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ TIMELINE ════════════════════════════════════════════ -->
+  <section class="timeline" id="beneficios">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="label">Lo que obtienes</span>
+        <h2 class="underline-accent">Ventajas de trabajar conmigo</h2>
+        <p>Acceso directo a un circuito federado que la mayoría no conoce, con información exclusiva y negociación personalizada.</p>
+      </div>
+      <div class="timeline__contenido">
+        <div class="timeline__grid">
+        <div class="timeline__point reveal reveal-delay-1">
+          <div class="timeline__circle">1</div>
+          <h3>Acceso a plazas federadas</h3>
+          <p>Conexión directa con clubes federados de toda España que buscan talento. Plazas que no salen a bolsa pública.</p>
+        </div>
+        <div class="timeline__point reveal reveal-delay-2">
+          <div class="timeline__circle">2</div>
+          <h3>Info exclusiva de clubes</h3>
+          <p>Sé exactamente qué club necesita refuerzos, qué nivel compiten y cuál es la mejor opción para tu perfil.</p>
+        </div>
+        <div class="timeline__point reveal reveal-delay-3">
+          <div class="timeline__circle">3</div>
+          <h3>Negociación personalizada</h3>
+          <p>Yo cierro los detalles: condiciones, horarios, categoría. Tú solo entrenas y compites en tu club ideal.</p>
+        </div>
+        <div class="timeline__point reveal reveal-delay-4">
+          <div class="timeline__circle">4</div>
+          <h3>Red de contactos directos</h3>
+          <p>Trayectoria real dentro del circuito. Los clubes me conocen.</p>
+        </div>
+        </div>
+        <div class="timeline__img reveal reveal-delay-2">
+          <img src="img/magnific_jugador-joven-1722-en-ple_2953516154.png" alt="Jugador joven en competencia" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FLUJO ═════════════════════════════════════════════ -->
+  <section class="flujo" id="proceso">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="label">Cómo lo hacemos</span>
+        <h2 class="underline-accent">El proceso en 3 pasos</h2>
+        <p>Un método directo y eficiente para conectarte con el equipo que necesitas.</p>
+      </div>
+      <div class="flujo__contenido">
+        <div class="flujo__pasos">
+          <div class="paso-flujo reveal reveal-delay-1">
+            <div class="paso-flujo__num">01</div>
+            <h3>Cuéntanos tu perfil</h3>
+            <p>Me debes ser honesto sobre tu nivel actual, categoría, objetivos y disponibilidad. A partir de ahí, trabajo.</p>
+          </div>
+          <div class="paso-flujo reveal reveal-delay-2">
+            <div class="paso-flujo__num">02</div>
+            <h3>Buscamos el equipo ideal</h3>
+            <p>Analizo mi red de clubes y encuentro las mejores opciones para ti. Negoció directamente con los directores.</p>
+          </div>
+          <div class="paso-flujo reveal reveal-delay-3">
+            <div class="paso-flujo__num">03</div>
+            <h3>Te conectamos con el club</h3>
+            <p>Cierro los detalles y te presento formalmente. Desde ese momento, tú y el club os relacionáis directamente.</p>
+          </div>
+        </div>
+        <div class="flujo__img reveal reveal-delay-2">
+          <img src="img/magnific_jugador-joven-1722-en-acc_2953480872.png" alt="Jugador en acción" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA FORMULARIO ════════════════════════════════════ -->
+  <section class="cta-formulario" id="contacto">
+    <div class="container">
+      <div class="cta-formulario__inner reveal">
+        <span class="label">Primer paso</span>
+        <h2>Quiero fichar</h2>
+        <p class="cta-formulario__desc">
+          Cuéntame dónde estás ahora y a dónde quieres llegar. Con esa información, ya sé qué puertas abrir.
+        </p>
+
+        <form class="formulario" id="formFichajes">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nivel">Nivel actual</label>
+            <select id="nivel" name="nivel" required>
+              <option value="">Selecciona tu nivel</option>
+              <option value="Amateur">Amateur</option>
+              <option value="Regional">Regional</option>
+              <option value="Nacional">Nacional</option>
+              <option value="Élite">Élite</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <input type="text" id="categoria" name="categoria" placeholder="Ej: Masculino, Femenino, Benjamín, Cadete, Junior, Senior" required>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Tu mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre ti: objetivos, disponibilidad, experiencia..." required></textarea>
+          </div>
+
+          <button type="submit" class="formulario__btn">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REDES SOCIALES ════════════════════════════════════ -->
+  <section class="redes">
+    <div class="redes__inner reveal">
+      <span class="label">Sígueme</span>
+      <h2>Únete a la comunidad</h2>
+      <p>Contenido diario sobre tenis de mesa, gestión de carreras, mentalidad competitiva y el camino hacia la élite.</p>
+      <div class="redes__grid">
+        <a href="https://www.instagram.com/el_marqui_0222?igsh=d2ZiNzN6b3VoMmRw&utm_source=qr" target="_blank" rel="noopener" class="red-btn red-btn--instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/share/U6rBfZrzLXdcktxu/?mibextid=LQQJ4d" target="_blank" rel="noopener" class="red-btn red-btn--facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.tiktok.com/@marcos.antonio.sa089?_t=8oLvyQIfCaX&_r=1" target="_blank" rel="noopener" class="red-btn red-btn--tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="img/logo-nav.png" alt="Marcos Sánchez">
+        </a>
+        <p class="footer__tagline">Manager estratégico de carreras en tenis de mesa. Convierte tu talento en trayectoria real.</p>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__nav-group">
+          <p class="footer__nav-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#galeria">Galería</a></li>
+            <li><a href="index.html#servicios">Servicios</a></li>
+            <li><a href="index.html#proceso">Proceso</a></li>
+            <li><a href="trayectoria.html">Sobre Mí</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Marcos Sánchez · Manager Estratégico de Carreras en Tenis de Mesa</p>
+      <div class="footer__accent-line"></div>
+    </div>
+  </footer>
+
+  <!-- ══ WHATSAPP FLOTANTE ════════════════════════════════ -->
+  <a href="https://wa.me/34614448067?text=Hola%20Marcos%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios"
+     target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+    </svg>
+    <span class="wa-float__tooltip">Escríbeme</span>
+  </a>
+
+  <script>
+    document.getElementById('formFichajes').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const nivel = document.getElementById('nivel').value;
+      const categoria = document.getElementById('categoria').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      const whatsappMessage = `Hola Marcos, me interesa el servicio de fichajes.
+
+Nombre: ${nombre}
+Nivel: ${nivel}
+Categoría: ${categoria}
+Mensaje: ${mensaje}`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/34614448067?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
