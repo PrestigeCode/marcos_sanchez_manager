@@ -158,13 +158,23 @@
       transition: transform var(--transition);
     }
 
-    .problema__card:hover {
+    @media (hover: hover) {
+      .problema__card:hover {
+        border-color: var(--accent);
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-accent);
+      }
+
+      .problema__card:hover::before { transform: scaleX(1); }
+    }
+
+    .problema__card.active {
       border-color: var(--accent);
       transform: translateY(-6px);
       box-shadow: var(--shadow-accent);
     }
 
-    .problema__card:hover::before { transform: scaleX(1); }
+    .problema__card.active::before { transform: scaleX(1); }
 
     .problema__icon {
       width: 52px; height: 52px;
@@ -364,13 +374,23 @@
       transition: transform var(--transition);
     }
 
-    .servicio:hover {
+    @media (hover: hover) {
+      .servicio:hover {
+        border-color: var(--accent);
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-accent);
+      }
+
+      .servicio:hover::before { transform: scaleY(1); }
+    }
+
+    .servicio.active {
       border-color: var(--accent);
       transform: translateY(-6px);
       box-shadow: var(--shadow-accent);
     }
 
-    .servicio:hover::before { transform: scaleY(1); }
+    .servicio.active::before { transform: scaleY(1); }
 
     .servicio__num {
       font-family: 'Montserrat', sans-serif;
@@ -436,7 +456,16 @@
       transition: all var(--transition);
     }
 
-    .paso:hover .paso__num {
+    @media (hover: hover) {
+      .paso:hover .paso__num {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 8px 24px rgba(245,111,54,0.35);
+      }
+    }
+
+    .paso.active .paso__num {
       border-color: var(--accent);
       background: var(--accent);
       color: #fff;
@@ -481,7 +510,13 @@
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .angulos__img-wrap:hover .angulos__img {
+    @media (hover: hover) {
+      .angulos__img-wrap:hover .angulos__img {
+        transform: scale(1.04);
+      }
+    }
+
+    .angulos__img-wrap.active .angulos__img {
       transform: scale(1.04);
     }
 
@@ -501,9 +536,18 @@
       color: var(--text-muted);
       line-height: 1.65;
       transition: all var(--transition);
+      cursor: pointer;
     }
 
-    .angulos__list li:hover {
+    @media (hover: hover) {
+      .angulos__list li:hover {
+        background: rgba(245, 111, 54, 0.08);
+        color: var(--text);
+        transform: translateX(8px);
+      }
+    }
+
+    .angulos__list li.active {
       background: rgba(245, 111, 54, 0.08);
       color: var(--text);
       transform: translateX(8px);
@@ -684,7 +728,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="fichajes.html">Fichajes</a></li>
         <li><a href="trayectoria.html">Sobre Mí</a></li>
         <li><a href="#contacto" class="nav__cta">Contactar</a></li>
       </ul>
@@ -698,7 +742,7 @@
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Galería</a>
     <a href="#servicios">Servicios</a>
-    <a href="#proceso">Proceso</a>
+    <a href="fichajes.html">Fichajes</a>
     <a href="trayectoria.html">Sobre Mí</a>
     <a href="#contacto">Contactar</a>
   </nav>
@@ -906,34 +950,16 @@
     </div>
   </section>
 
-  <!-- ══ PROCESO ════════════════════════════════════════════ -->
-  <section class="proceso" id="proceso">
+  <!-- ══ CTA FICHAJES ════════════════════════════════════════ -->
+  <section class="cta-final" id="fichajes-cta">
     <div class="container">
-      <div class="section-header center reveal">
-        <span class="label">Cómo trabajo</span>
-        <h2 class="underline-accent">Mi proceso en 4 fases</h2>
-        <p>Un método estructurado que convierte talento en trayectoria competitiva real.</p>
-      </div>
-      <div class="proceso__grid">
-        <div class="paso reveal reveal-delay-1">
-          <div class="paso__num">1</div>
-          <h3>Diagnóstico competitivo</h3>
-          <p>Evaluamos el nivel real, el entorno y las oportunidades del atleta con honestidad.</p>
-        </div>
-        <div class="paso reveal reveal-delay-2">
-          <div class="paso__num">2</div>
-          <h3>Plan estratégico personalizado</h3>
-          <p>Definimos objetivos, calendario y acciones concretas a corto y largo plazo.</p>
-        </div>
-        <div class="paso reveal reveal-delay-3">
-          <div class="paso__num">3</div>
-          <h3>Conexión con clubes y ligas</h3>
-          <p>Identificamos y contactamos con los clubes y ligas ideales para el perfil del atleta.</p>
-        </div>
-        <div class="paso reveal reveal-delay-4">
-          <div class="paso__num">4</div>
-          <h3>Seguimiento y optimización</h3>
-          <p>Acompañamiento continuo para ajustar y mejorar resultados según la evolución.</p>
+      <div class="reveal">
+        <span class="label">Servicio especializado</span>
+        <h2>¿Buscas equipo?</h2>
+        <p>Tengo un servicio de intermediación para conectar jóvenes talentos con clubes federados de toda España. Acceso directo a plazas que no salen a bolsa pública.</p>
+        <div class="cta-final__btns">
+          <a href="fichajes.html" class="btn btn-primary">Explorar servicio de fichajes</a>
+          <a href="#contacto" class="btn btn-outline">Hablar conmigo</a>
         </div>
       </div>
     </div>
@@ -971,7 +997,7 @@
         <h2>¿Listo para construir tu trayectoria?</h2>
         <p>El talento necesita dirección. Hablemos sobre el diagnóstico y el siguiente paso.</p>
         <div class="cta-final__btns">
-          <a href="https://wa.me/34614448067?text=Hola%20Marcos%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios" target="_blank" rel="noopener" class="btn btn-primary">Hablar con Marcos</a>
+          <a href="fichajes.html#contacto" class="btn btn-primary">Hablar con Marcos</a>
           <a href="trayectoria.html" class="btn btn-outline">Ver mi trayectoria</a>
         </div>
       </div>
@@ -1017,7 +1043,7 @@
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#galeria">Galería</a></li>
             <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="fichajes.html">Fichajes</a></li>
             <li><a href="trayectoria.html">Sobre Mí</a></li>
           </ul>
         </div>

@@ -138,4 +138,25 @@
     });
   }
 
+  /* ── Touch effects para tarjetas (móviles) ───────────────────── */
+  var touchElements = document.querySelectorAll(
+    '.problema__card, .servicio, .paso, .angulos__list li, .angulos__img-wrap, ' +
+    '.card, .photo, .btn, .stat-item, .red-btn, .metod__card, .bio__img-wrap, ' +
+    '.hito, .colaboracion-box, .video__wrap, .marquee__item'
+  );
+
+  function clearActive() {
+    touchElements.forEach(function (el) { el.classList.remove('active'); });
+  }
+
+  touchElements.forEach(function (el) {
+    el.addEventListener('touchstart', function (e) {
+      clearActive();
+      el.classList.add('active');
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener('touchstart', clearActive);
+
 })();
