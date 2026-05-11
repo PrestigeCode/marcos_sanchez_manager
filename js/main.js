@@ -159,4 +159,69 @@
 
   document.addEventListener('touchstart', clearActive);
 
+  /* ── Modal Contacto ──────────────────────────────────────── */
+  var modalContacto = document.getElementById('modal-contacto');
+  var btnOpenModal = document.getElementById('open-modal-contacto');
+  var modalClose = document.querySelector('.modal-close');
+  var formContacto = document.getElementById('form-contacto');
+
+  function openModal() {
+    if (modalContacto) {
+      modalContacto.classList.add('active');
+      modalContacto.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    if (modalContacto) {
+      modalContacto.classList.remove('active');
+      modalContacto.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (btnOpenModal) {
+    btnOpenModal.addEventListener('click', openModal);
+  }
+
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  if (modalContacto) {
+    modalContacto.addEventListener('click', function (e) {
+      if (e.target === modalContacto) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalContacto && modalContacto.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  if (formContacto) {
+    formContacto.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = document.getElementById('nombre').value;
+      var email = document.getElementById('email').value;
+      var telefono = document.getElementById('telefono').value;
+      var asunto = document.getElementById('asunto').value;
+      var mensaje = document.getElementById('mensaje').value;
+
+      var whatsappMessage = 'Hola Marcos, soy ' + nombre + '\n\n' +
+        'Situación: ' + asunto + '\n\n' +
+        'Mi email: ' + email + '\n' +
+        'Mi teléfono: ' + (telefono || 'No proporcionado') + '\n\n' +
+        'Mensaje:\n' + mensaje;
+
+      var whatsappLink = 'https://wa.me/34614448067?text=' + encodeURIComponent(whatsappMessage);
+
+      window.open(whatsappLink, '_blank');
+      closeModal();
+      formContacto.reset();
+    });
+  }
+
 })();

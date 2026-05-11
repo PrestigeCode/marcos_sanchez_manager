@@ -716,6 +716,187 @@
       .paso__num { width: 56px; height: 56px; font-size: 1rem; }
       .cta-final h2 { font-size: 1.25rem; }
     }
+
+    /* ── Modal Contacto ─────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      animation: modalSlideIn 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-header {
+      margin-bottom: 30px;
+      padding-right: 20px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color var(--transition);
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f56f36' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: rgba(245, 111, 54, 0.05);
+    }
+
+    .form-group select:focus {
+      background-color: rgba(245, 111, 54, 0.05);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f56f36' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .form-group select option {
+      background: var(--bg);
+      color: var(--text);
+      padding: 8px;
+    }
+
+    .form-group select option:checked {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .form-notice {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        padding: 30px 20px;
+        border-radius: var(--radius-md);
+      }
+
+      .modal-header h2 {
+        font-size: 1.4rem;
+      }
+
+      .modal-close {
+        top: 16px;
+        right: 16px;
+      }
+
+      .modal-header {
+        padding-right: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -997,7 +1178,7 @@
         <h2>¿Listo para construir tu trayectoria?</h2>
         <p>El talento necesita dirección. Hablemos sobre el diagnóstico y el siguiente paso.</p>
         <div class="cta-final__btns">
-          <a href="fichajes.html#contacto" class="btn btn-primary">Hablar con Marcos</a>
+          <button class="btn btn-primary" id="open-modal-contacto">Hablar con Marcos</button>
           <a href="trayectoria.html" class="btn btn-outline">Ver mi trayectoria</a>
         </div>
       </div>
@@ -1068,6 +1249,48 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox__close" aria-label="Cerrar">×</button>
     <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- ══ MODAL CONTACTO ═════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-contacto" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">×</button>
+      <div class="modal-header">
+        <h2 id="modal-title">Hablar con Marcos</h2>
+        <p>Cuéntame sobre tu situación y el siguiente paso</p>
+      </div>
+      <form class="modal-form" id="form-contacto">
+        <div class="form-group">
+          <label for="nombre">Nombre *</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+34 6xx xxx xxx">
+        </div>
+        <div class="form-group">
+          <label for="asunto">¿Cuál es tu situación? *</label>
+          <select id="asunto" name="asunto" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Búsqueda de club">Busco un club o liga</option>
+            <option value="Orientación deportiva">Necesito orientación deportiva</option>
+            <option value="Sparrings">Organizar sparrings</option>
+            <option value="Asesoría">Asesoría personalizada</option>
+            <option value="Otro">Otro (especificar en mensaje)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" required placeholder="Cuéntame un poco más..." rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar mensaje</button>
+        <p class="form-notice">Te responderé en las próximas 24 horas</p>
+      </form>
+    </div>
   </div>
 
   <script src="js/main.js"></script>
