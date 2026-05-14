@@ -255,6 +255,121 @@
       line-height: 1.75;
     }
 
+    /* Separador elegante */
+    .separador-elegante {
+      height: 160px;
+      background: linear-gradient(180deg, var(--bg) 0%, transparent 50%, var(--bg) 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .separador-elegante::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .separador-elegante::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    /* Testimonios */
+    .testimonios { background: var(--bg); }
+
+    .testimonios__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .testimonio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonio-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 20px 48px rgba(245, 111, 54, 0.15);
+      transform: translateY(-8px);
+    }
+
+    .testimonio-card__img {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(245,111,54,0.1), rgba(245,111,54,0.05));
+    }
+
+    .testimonio-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition);
+    }
+
+    .testimonio-card:hover .testimonio-card__img img {
+      transform: scale(1.05);
+    }
+
+    .testimonio-card__content {
+      padding: 32px 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonio-card__quote {
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .testimonio-card__quote p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .testimonio-card__name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .testimonio-card__level {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .testimonio-card__club {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
     /* Formulario CTA */
     .cta-formulario { background: var(--bg-section); }
 
@@ -383,6 +498,11 @@
       .timeline__grid::before {
         display: none;
       }
+
+      .testimonios__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -446,6 +566,36 @@
       .formulario {
         padding: 24px;
       }
+
+      .testimonio-card__img {
+        height: 260px;
+      }
+
+      .testimonio-card__content {
+        padding: 20px 16px;
+      }
+
+      .testimonio-card__quote p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .testimonio-card__name {
+        font-size: 1rem;
+      }
+
+      .testimonio-card__level {
+        font-size: 0.8rem;
+      }
+
+      .testimonio-card__club {
+        font-size: 0.82rem;
+      }
+
+      .testimonios__grid {
+        gap: 20px;
+        margin-top: 40px;
+      }
     }
 
     @media (max-width: 540px) {
@@ -484,6 +634,38 @@
       .formulario {
         gap: 14px;
       }
+
+      .testimonios__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .testimonio-card {
+        border-radius: var(--radius-md);
+      }
+
+      .testimonio-card__img {
+        height: 280px;
+      }
+
+      .testimonio-card__content {
+        padding: 18px 14px;
+      }
+
+      .testimonio-card__quote p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+
+      .testimonio-card__name {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+
+      .testimonio-card__quote {
+        margin-bottom: 16px;
+      }
     }
 
     @media (max-width: 380px) {
@@ -499,6 +681,34 @@
 
       .cta-formulario h2 {
         font-size: 1.25rem;
+      }
+
+      .testimonio-card__img {
+        height: 260px;
+      }
+
+      .testimonio-card__content {
+        padding: 16px 12px;
+      }
+
+      .testimonio-card__quote p {
+        font-size: 0.85rem;
+      }
+
+      .testimonio-card__name {
+        font-size: 0.9rem;
+      }
+
+      .testimonio-card__level {
+        font-size: 0.75rem;
+      }
+
+      .testimonio-card__club {
+        font-size: 0.78rem;
+      }
+
+      .testimonios__grid {
+        gap: 14px;
       }
     }
   </style>
@@ -546,7 +756,7 @@
         Llevo años dentro del tenis de mesa — como jugador y como manager — y eso me ha dado algo que no se compra: confianza y relación directa con clubes y ligas de toda España. Sé cómo funciona el circuito por dentro y sé exactamente dónde encaja cada jugador.
       </p>
       <p class="hero-fichajes__desc reveal reveal-delay-2" style="margin-bottom: 0; color: var(--text); font-weight: 500;">
-        Si quieres dar el salto a un equipo competitivo, no tienes que llamar a puertas a ciegas. Yo ya sé cuáles abrir.
+        Si quieres dar el salto a un equipo competitivo, no tienes que ir a ciegas<br><span style="color: var(--accent);">Te acompaño</span>
       </p>
     </div>
   </section>
@@ -617,6 +827,63 @@
         </div>
         <div class="flujo__img reveal reveal-delay-2">
           <img src="img/magnific_jugador-joven-1722-en-acc_2953480872.png" alt="Jugador en acción" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SEPARADOR ════════════════════════════════════════ -->
+  <div class="separador-elegante"></div>
+
+  <!-- ══ TESTIMONIOS ═════════════════════════════════════ -->
+  <section class="testimonios" id="testimonios">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="label">Historias reales</span>
+        <h2 class="underline-accent">Fichajes conseguidos</h2>
+        <p>Atletas que confiaron en mi trabajo y hoy compiten en equipos competitivos de toda España.</p>
+      </div>
+      <div class="testimonios__grid">
+        <div class="testimonio-card reveal reveal-delay-1">
+          <div class="testimonio-card__img">
+            <img src="img/Image_vyvpt5vyvpt5vyvp.png" alt="Rosalba Aguiar" loading="lazy">
+          </div>
+          <div class="testimonio-card__content">
+            <div class="testimonio-card__quote">
+              <p>"Yo jugaba a nivel local, pero no sabía cómo entrar en el circuito federado. Marcos me abrió la puerta a Alcobendas — ahora compito a otro nivel."</p>
+            </div>
+            <h3 class="testimonio-card__name">Rosalba Aguiar</h3>
+            <p class="testimonio-card__level">Amateur → Regional</p>
+            <p class="testimonio-card__club">Alcobendas TM</p>
+          </div>
+        </div>
+
+        <div class="testimonio-card reveal reveal-delay-2">
+          <div class="testimonio-card__img">
+            <img src="img/Gemini_Generated_Image_edbriqedbriqedbr.png" alt="Rene Méndez" loading="lazy">
+          </div>
+          <div class="testimonio-card__content">
+            <div class="testimonio-card__quote">
+              <p>"Competir en Primera División Nacional era el objetivo. Marcos cerró todo en el Altiplano y me permitió enfocarse solo en entrenar. Eso marca la diferencia."</p>
+            </div>
+            <h3 class="testimonio-card__name">Rene Méndez</h3>
+            <p class="testimonio-card__level">Primera División Nacional</p>
+            <p class="testimonio-card__club">C.T.M Altiplano</p>
+          </div>
+        </div>
+
+        <div class="testimonio-card reveal reveal-delay-3">
+          <div class="testimonio-card__img">
+            <img src="img/magnific_photo-a-19yearold-black-f_2984623695.png" alt="Estela Crespo" loading="lazy">
+          </div>
+          <div class="testimonio-card__content">
+            <div class="testimonio-card__quote">
+              <p>"El salto a División de Honor parecía imposible. Pero Marcos vio en mí lo que yo no veía. Hoy compito en la élite del tenis de mesa español."</p>
+            </div>
+            <h3 class="testimonio-card__name">Estela Crespo</h3>
+            <p class="testimonio-card__level">Regional → División de Honor</p>
+            <p class="testimonio-card__club">Club TM Corverastur</p>
+          </div>
         </div>
       </div>
     </div>
