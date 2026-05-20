@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <title>Spin Trade — Symbol (Dark)</title>
+  
+    <path d="M 16 100 A 104 30 0 0 1 224 100" fill="none" stroke="#E8420A" stroke-width="11" stroke-linecap="round"/>
+    <rect x="106" y="155" width="28" height="72" rx="11" fill="#EBEBEB"/>
+    <circle cx="120" cy="100" r="54" fill="#E8420A"/>
+    <ellipse cx="120" cy="78" rx="22" ry="7" fill="#ffffff" opacity="0.18"/>
+    <path d="M 16 100 A 104 30 0 0 0 224 100" fill="none" stroke="#E8420A" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="120" cy="70" r="13" fill="#E8420A" stroke="#EBEBEB" stroke-width="4"/>
+</svg>
