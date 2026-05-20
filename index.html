@@ -897,6 +897,344 @@
         padding-right: 0;
       }
     }
+
+    /* ── Carrusel premium de testimonios ─────────────────── */
+    .testi-carousel {
+      background: var(--bg-section);
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testi-carousel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 64px;
+      background: linear-gradient(to bottom, var(--border-mid), transparent);
+    }
+
+    .testi-carousel__header {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .testi-carousel__header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 12px 0 14px;
+    }
+
+    .testi-carousel__header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0 auto;
+    }
+
+    .testi-carousel__viewport {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .testi-carousel__track {
+      display: flex;
+      align-items: stretch;
+      will-change: transform;
+      transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+      padding: 24px 0;
+    }
+
+    .testi-carousel__slide {
+      flex: 0 0 var(--testi-slide-w, 32vw);
+      max-width: 420px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      opacity: 0.45;
+      transform: scale(0.9);
+      transition: opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+                  transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+      display: flex;
+    }
+
+    .testi-carousel__slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Tarjeta de testimonio */
+    .testi-carousel .testimonio-card {
+      background: var(--bg-card, var(--bg));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .testi-carousel__slide.is-active .testimonio-card {
+      border-color: rgba(245, 111, 54, 0.4);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55),
+                  0 0 0 1px rgba(245, 111, 54, 0.22),
+                  0 20px 60px rgba(245, 111, 54, 0.12);
+    }
+
+    .testi-carousel .testimonio-card__img {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(245,111,54,0.1), rgba(245,111,54,0.05));
+    }
+
+    .testi-carousel .testimonio-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition);
+    }
+
+    .testi-carousel__slide.is-active .testimonio-card__img img {
+      transform: scale(1.04);
+    }
+
+    .testi-carousel .testimonio-card__content {
+      padding: 32px 26px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testi-carousel .testimonio-card__quote {
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .testi-carousel .testimonio-card__quote p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .testi-carousel .testimonio-card__name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .testi-carousel .testimonio-card__level {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .testi-carousel .testimonio-card__club {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Flechas */
+    .testi-carousel__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(15, 15, 15, 0.85);
+      border: 1px solid var(--border-mid);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition);
+    }
+
+    .testi-carousel__arrow svg {
+      width: 22px; height: 22px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .testi-carousel__arrow:hover,
+    .testi-carousel__arrow:focus-visible {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(245, 111, 54, 0.35);
+      outline: none;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .testi-carousel__arrow:active { transform: translateY(-50%) scale(0.98); }
+
+    .testi-carousel__arrow--prev { left: clamp(12px, 3vw, 48px); }
+    .testi-carousel__arrow--next { right: clamp(12px, 3vw, 48px); }
+
+    /* Dots */
+    .testi-carousel__dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      padding: 0 24px;
+    }
+
+    .testi-carousel__dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--border-mid);
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      transition: background var(--transition), width var(--transition);
+    }
+
+    .testi-carousel__dot:hover { background: var(--text-muted); }
+
+    .testi-carousel__dot.is-active {
+      background: var(--accent);
+      width: 32px;
+      border-radius: 6px;
+    }
+
+    .testi-carousel__dot:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .testi-carousel__counter {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .testi-carousel__counter span { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .testi-carousel__slide { --testi-slide-w: 36vw; }
+    }
+
+    @media (max-width: 1023px) {
+      .testi-carousel { padding: 88px 0; }
+      .testi-carousel__slide { --testi-slide-w: 52vw; padding: 0 12px; }
+      .testi-carousel__arrow { width: 50px; height: 50px; }
+    }
+
+    @media (max-width: 767px) {
+      .testi-carousel { padding: 72px 0; }
+      .testi-carousel__header { margin-bottom: 40px; }
+      .testi-carousel__slide {
+        --testi-slide-w: 86vw;
+        padding: 0 8px;
+      }
+      .testi-carousel__slide:not(.is-active) {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      .testi-carousel__arrow { width: 44px; height: 44px; }
+      .testi-carousel__arrow--prev { left: 8px; }
+      .testi-carousel__arrow--next { right: 8px; }
+      .testi-carousel .testimonio-card__img { height: 240px; }
+      .testi-carousel .testimonio-card__content { padding: 24px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .testi-carousel { padding: 60px 0; }
+      .testi-carousel__slide { --testi-slide-w: 90vw; }
+      .testi-carousel__dots { margin-top: 32px; gap: 8px; }
+      .testi-carousel__dot { width: 8px; height: 8px; }
+      .testi-carousel__dot.is-active { width: 26px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .testi-carousel__track,
+      .testi-carousel__slide,
+      .testi-carousel__arrow,
+      .testi-carousel__dot,
+      .testi-carousel .testimonio-card,
+      .testi-carousel .testimonio-card__img img {
+        transition: none !important;
+      }
+    }
+
+    /* ── Desktop ≥ 1024px: layout horizontal de la tarjeta ── */
+    @media (min-width: 1024px) {
+      .testi-carousel__slide {
+        --testi-slide-w: 72vw;
+        max-width: 900px;
+        padding: 0 24px;
+      }
+
+      .testi-carousel .testimonio-card {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .testi-carousel .testimonio-card__img {
+        flex: 0 0 44%;
+        width: 44%;
+        height: auto;
+        min-height: 380px;
+      }
+
+      .testi-carousel .testimonio-card__content {
+        flex: 1 1 auto;
+        padding: 48px 48px;
+        justify-content: center;
+      }
+
+      .testi-carousel .testimonio-card__quote {
+        margin-bottom: 28px;
+        flex-grow: 0;
+      }
+
+      .testi-carousel .testimonio-card__quote p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .testi-carousel .testimonio-card__name {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+      }
+
+      .testi-carousel .testimonio-card__level {
+        font-size: 0.9rem;
+      }
+
+      .testi-carousel .testimonio-card__club {
+        font-size: 0.92rem;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .testi-carousel__slide {
+        --testi-slide-w: 64vw;
+        max-width: 980px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1101,43 +1439,78 @@
     </div>
   </section>
 
-  <!-- ══ CARRUSEL DE VIDEOS ════════════════════════════════ -->
-  <!--
-    Para añadir más videos al carrusel, simplemente añade objetos
-    al array JSON en el atributo data-videos. Formato:
-    { "url": "https://www.youtube.com/embed/VIDEO_ID", "title": "...", "desc": "..." }
-  -->
-  <section class="yt-carousel" id="videos-canal"
-    aria-label="Últimos videos del canal de Spin Trade"
-    aria-roledescription="carousel"
-    data-videos='[
-      {"url":"https://www.youtube.com/embed/vgMtHk-GGsI","title":"Video 1","desc":""},
-      {"url":"https://www.youtube.com/embed/l-T1hQQDLro","title":"Video 2","desc":""},
-      {"url":"https://www.youtube.com/embed/2gHD9UQDAzc","title":"Video 3","desc":""}
-    ]'>
-    <div class="yt-carousel__header reveal">
-      <span class="label">Canal de YouTube</span>
-      <h2 class="underline-accent">Últimos videos</h2>
-      <p>Contenido sobre gestión deportiva, competiciones, entrenamientos y la realidad del circuito federado de tenis de mesa.</p>
-      <a href="https://www.youtube.com/@MarcosSanchezTT" target="_blank" rel="noopener" class="yt-carousel__yt-link">
-        Ver canal completo →
-      </a>
+  <!-- ══ CARRUSEL DE TESTIMONIOS ═══════════════════════════ -->
+  <section class="testi-carousel" id="testimonios"
+    aria-label="Testimonios de fichajes conseguidos"
+    aria-roledescription="carousel">
+    <div class="testi-carousel__header reveal">
+      <span class="label">Historias reales</span>
+      <h2 class="underline-accent">Fichajes conseguidos</h2>
+      <p>Atletas que confiaron en nuestro trabajo y hoy compiten en equipos competitivos de toda España.</p>
     </div>
 
-    <div class="yt-carousel__viewport">
-      <button type="button" class="yt-carousel__arrow yt-carousel__arrow--prev" data-yt-prev aria-label="Video anterior">
+    <div class="testi-carousel__viewport">
+      <button type="button" class="testi-carousel__arrow testi-carousel__arrow--prev" data-testi-prev aria-label="Testimonio anterior">
         <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
 
-      <div class="yt-carousel__track" data-yt-track role="list"></div>
+      <div class="testi-carousel__track" data-testi-track role="list">
+        <article class="testi-carousel__slide" role="listitem">
+          <div class="testimonio-card">
+            <div class="testimonio-card__img">
+              <img src="img/Image_vyvpt5vyvpt5vyvp.png" alt="Rosalba Aguiar" loading="lazy">
+            </div>
+            <div class="testimonio-card__content">
+              <div class="testimonio-card__quote">
+                <p>"Yo jugaba a nivel local, pero no sabía cómo entrar en el circuito federado. Marcos me abrió la puerta a Alcobendas — ahora compito a otro nivel."</p>
+              </div>
+              <h3 class="testimonio-card__name">Rosalba Aguiar</h3>
+              <p class="testimonio-card__level">Amateur → Regional</p>
+              <p class="testimonio-card__club">Alcobendas TM</p>
+            </div>
+          </div>
+        </article>
 
-      <button type="button" class="yt-carousel__arrow yt-carousel__arrow--next" data-yt-next aria-label="Siguiente video">
+        <article class="testi-carousel__slide" role="listitem">
+          <div class="testimonio-card">
+            <div class="testimonio-card__img">
+              <img src="img/Gemini_Generated_Image_edbriqedbriqedbr.png" alt="Rene Méndez" loading="lazy">
+            </div>
+            <div class="testimonio-card__content">
+              <div class="testimonio-card__quote">
+                <p>"Competir en Primera División Nacional era el objetivo. Marcos cerró todo en el Altiplano y me permitió enfocarse solo en entrenar. Eso marca la diferencia."</p>
+              </div>
+              <h3 class="testimonio-card__name">Rene Méndez</h3>
+              <p class="testimonio-card__level">Primera División Nacional</p>
+              <p class="testimonio-card__club">C.T.M Altiplano</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-carousel__slide" role="listitem">
+          <div class="testimonio-card">
+            <div class="testimonio-card__img">
+              <img src="img/magnific_photo-a-19yearold-black-f_2984623695.png" alt="Estela Crespo" loading="lazy">
+            </div>
+            <div class="testimonio-card__content">
+              <div class="testimonio-card__quote">
+                <p>"El salto a División de Honor parecía imposible. Pero Marcos vio en mí lo que yo no veía. Hoy compito en la élite del tenis de mesa español."</p>
+              </div>
+              <h3 class="testimonio-card__name">Estela Crespo</h3>
+              <p class="testimonio-card__level">Regional → División de Honor</p>
+              <p class="testimonio-card__club">Club TM Corverastur</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <button type="button" class="testi-carousel__arrow testi-carousel__arrow--next" data-testi-next aria-label="Siguiente testimonio">
         <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
     </div>
 
-    <div class="yt-carousel__dots" data-yt-dots role="tablist" aria-label="Selector de video"></div>
-    <div class="yt-carousel__counter" data-yt-counter aria-live="polite"></div>
+    <div class="testi-carousel__dots" data-testi-dots role="tablist" aria-label="Selector de testimonio"></div>
+    <div class="testi-carousel__counter" data-testi-counter aria-live="polite"></div>
   </section>
 
   <!-- ══ SERVICIOS ═════════════════════════════════════════ -->
